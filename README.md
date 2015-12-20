@@ -1,5 +1,5 @@
 # CricketPrediction
-Predict a cricket match ball by ball. Simulation of a cricket match using Big Data analysis.
+Predict a cricket match ball by ball. Simulation of a cricket match using Big Data analysis. This is a college project, developed as part of BigData learning exercise, focus on clustering of batsman and bowler and prediction on runs.
 
 #How to run
 cd ipl/run
@@ -15,9 +15,15 @@ Currently, This project can only simulate an already played match, since we need
 https://code.google.com/p/bayon/
 
 #Data Source
-cricsheet.org
+http://cricsheet.org/
 
 #TODO
 - Consider extras
 - Consider wickets
 - Strike change
+
+
+... Contributions accepted :)
+
+
+
