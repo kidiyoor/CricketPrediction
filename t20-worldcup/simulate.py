@@ -1,5 +1,6 @@
 import os
 import yaml
+import random
 
 bat = open('batCluster.tsv','r')
 bowl = open('bowlCluster.tsv','r')
@@ -19,26 +20,19 @@ for i in bowl.readlines():
 
 
 
-
-def maxamg(p0,p1,p2,p3,p4,p6):
-	m = p0
-	out = 0
-	if p1 > m :
-		out = 1
-		m = p1
-	if p2 > m :
-		out = 2
-		m = p1
-	if p3 > m :
-		out = 3
-		m = p1
-	if p4 > m :
-		out = 4
-		m = p1
-	if p6 > m :
-		out = 6
-		m = p1
-	return out
+def predictRun(plist):
+	r = random.random()
+	tl = [sum(plist[:i]) for i in range(len(plist)+1)]
+	tl = tl[1:]
+	i = 0
+	run = 0
+	while r > tl[i] :
+		if run == 4:
+			run = run + 2
+		else:
+			run = run + 1
+		i = i + 1
+	return run
 
 
 data = yaml.load(open('sample.txt','r').read())
@@ -76,9 +70,6 @@ for row in data['data1']:
 			a0 = a0 + 1
 		tballs = tballs +1
 		
-	a1 = a1 * 1
-	a4 = a4 * 4
-	a6 = a6 * 2	
 	p0 = float(a0)/tballs
 	p1 = float(a1)/tballs
 	p2 = float(a2)/tballs
@@ -87,7 +78,7 @@ for row in data['data1']:
 	p6 = float(a6)/tballs
 
 
-	p = maxamg(p0,p1,p2,p3,p4,p6)
+	p = predictRun([p0,p1,p2,p3,p4,p6])
 	trun = trun + p
 	print("------------")
 	print("Ball : " + str(count) )
@@ -132,10 +123,7 @@ for row in data['data2']:
 		elif d[3] == '0':
 			a0 = a0 + 1
 		tballs = tballs +1
-		
-	a1 = a1 * 1
-	a4 = a4 * 4
-	a6 = a6 * 2	
+			
 	p0 = float(a0)/tballs
 	p1 = float(a1)/tballs
 	p2 = float(a2)/tballs
@@ -144,7 +132,7 @@ for row in data['data2']:
 	p6 = float(a6)/tballs
 
 
-	p = maxamg(p0,p1,p2,p3,p4,p6)
+	p = predictRun([p0,p1,p2,p3,p4,p6])
 	trun = trun + p
 	print("------------")
 	print("Ball : " + str(count) )

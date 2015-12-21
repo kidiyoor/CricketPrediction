@@ -28,23 +28,17 @@ winner = ""
 
 def predictRun(plist):
 	r = random.random()
-	print(plist)
 	tl = [sum(plist[:i]) for i in range(len(plist)+1)]
 	tl = tl[1:]
 	i = 0
 	run = 0
-	print(r)
-	print(tl)
 	while r > tl[i] :
-		if run == 2:
-			run= run + 2
-		elif run == 4:
+		if run == 4:
 			run = run + 2
 		else:
 			run = run + 1
 		i = i + 1
-		
-	return i
+	return run
 
 
 
@@ -107,13 +101,6 @@ def play(innings):
 				a0 = a0 + 1
 				tballs += 1	
 		
-		#ae = 500
-#		a1 *= 10
-#		a2 *= 6
-#		a4 *= 4
-#		a6 *= 2
-
-		
 
 		p0 = float(a0)/tballs
 		p1 = float(a1)/tballs
@@ -121,7 +108,7 @@ def play(innings):
 		p3 = float(a3)/tballs
 		p4 = float(a4)/tballs
 		p6 = float(a6)/tballs
-		#pe = float(ae)/tballs
+
 
 
 		p = predictRun([p0,p1,p2,p3,p4,p6])
@@ -158,8 +145,8 @@ play(innings2)
 
 
 print "PREDICTED : "
-print("\nTarget  : " + str(target))
-print("Score  : " + str(trun))
+print "\nTarget  : " + str(target)
+print "Score  : " + str(trun)
 
 
 print "\n"
@@ -209,7 +196,7 @@ def maxrunplayer(ifile):
 		except KeyError:
 			i2_batsman_runs[row[row.keys()[0]]['batsman']] = 0
 
-	print "\n\n\nACTUAL : "
+	print "\n\n\nACTUAL : \n"
 	print "Team 1",in1_score
 	print "Team 2",in2_score
 
